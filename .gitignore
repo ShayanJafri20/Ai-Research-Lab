@@ -1,0 +1,4 @@
+# Obsidian's local UI state (open pane, cursor position) — changes on every click,
+# meaningless to sync between machines, would just create noisy diffs.
+context/.obsidian/workspace.json
+context/.obsidian/workspace-mobile.json
