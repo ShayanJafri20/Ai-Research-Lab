@@ -27,6 +27,8 @@ Whenever a new concept, function, or tool is explained, link its official docume
 
 No installing FastAPI/React/PostgreSQL/Redis/Docker/PyTorch-adjacent tooling preemptively "for later." Before introducing any new tool: explain the problem it solves, what we did without it, why this tool specifically, then install, verify, smallest-possible example, integrate. Record it in [[06-Dependencies]] immediately after.
 
+Once the venv exists (V0.3+), every `pip install` gets pinned into `lab/requirements.txt` in the same commit that adds the dependency — never written speculatively ahead of an actual `pip install`, and never left to drift out of sync with what's really installed.
+
 ## Hard rule 4 — virtual environment first, explained from first principles
 
 Every new runtime environment starts with an isolated environment (e.g. `python -m venv .venv`) and an explanation of *why* isolation matters, before any package is installed.
