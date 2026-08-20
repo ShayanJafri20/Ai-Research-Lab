@@ -24,4 +24,5 @@ Update this whenever a session reveals what the user does/doesn't understand. Dr
 
 | Date | Concept | Status | Notes |
 |---|---|---|---|
+| 2026-08-20 | Git core mechanics (working directory / staging / repo, `add`/`commit`/`push`/`pull`, `.gitignore`) | Understood | Confirmed after a from-scratch walkthrough — first pass moved too fast (jumped straight to commands without the mental model), second pass slowed down and it landed. Branches/merges/PRs still unconfirmed — see [[01-Philosophy]] hard rule 3, deferred to first real multi-machine divergence. |
 | 2026-08-20 | (vault created, no teaching session yet) | — | — |
