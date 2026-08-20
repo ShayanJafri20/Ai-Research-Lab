@@ -4,6 +4,16 @@ Append-only. Newest entry at the top. Each entry: date, decision, why, alternati
 
 ---
 
+### 2026-08-20 — Removed premature venv step from V0.1
+
+**Decision:** Moved "set up a Python virtual environment" out of the V0.1 next-step list. V0.1 is pure static HTML/CSS/JS — no Python code exists yet to isolate. Venv setup now correctly waits for V0.3 (first raw Python HTTP server).
+
+**Why:** Caught while about to execute [[08-Next-Step]] as originally written — it had been drafted speculatively when the vault was first built, before re-checking it against [[01-Philosophy]] hard rule 3 (no tool without a real, current problem) and hard rule 8 (earn every layer). A venv with nothing to isolate is exactly the kind of unexplained setup the project is trying to avoid.
+
+**Alternatives considered:** Setting it up anyway "since we'll need it eventually" (rejected — that's precisely the preemptive-installation pattern hard rule 3 exists to prevent).
+
+---
+
 ### 2026-08-20 — Git + private GitHub repo chosen for multi-machine work
 
 **Decision:** The whole project (`context/` vault and future `lab/`/`sandbox/` code) lives in one private GitHub repo — `https://github.com/ShayanJafri20/Ai-Research-Lab` — synced via plain `git push`/`git pull` between machines. `context/` is tracked in the same repo as the code, not gitignored or split out. `context/.obsidian/workspace.json` is gitignored (pure local UI state, not privacy-related — see `.gitignore`).

@@ -10,13 +10,13 @@ The context vault ([[00-Hub]] and siblings) is built and pushed to a private Git
 
 **Next action:** Begin V0.1 per [[03-Roadmap]]:
 
-1. Explain why the project folder/environment is being set up the way it is.
+1. Explain why the project folder is being set up the way it is.
 2. Create `Project/lab/` for the actual application.
-3. Set up a Python virtual environment (`python -m venv .venv`) inside it, explained from first principles per [[01-Philosophy]] hard rule 4 — what it is, why isolation matters, activation, `pip`.
-4. Verify Python/pip versions.
-5. Give the first tiny implementation task: a static AI Research Lab page with Models / Datasets / Experiments sections and one button that changes something on the page — HTML first, taught chunk by chunk per [[01-Philosophy]] hard rule 2, before any CSS or JS.
+3. Give the first tiny implementation task: a static AI Research Lab page with Models / Datasets / Experiments sections and one button that changes something on the page — HTML first, taught chunk by chunk per [[01-Philosophy]] hard rule 2, before any CSS or JS.
 
-Do not install FastAPI, a database, Docker, or any framework yet — none of that is justified until a real problem in V0.1+ calls for it (hard rule 3).
+**Correction (2026-08-20):** a Python virtual environment was previously listed as a V0.1 step — that was wrong and got caught before doing it. V0.1 has zero Python in it (pure static HTML/CSS/JS). A venv isolates Python packages; there's nothing to isolate yet. It belongs at **V0.3**, when a raw Python HTTP server first appears — not before. See [[04-Decisions]].
+
+Do not install FastAPI, a database, Docker, a venv, or any framework yet — none of that is justified until a real problem in V0.1+ calls for it (hard rule 3).
 
 ## After that
 
