@@ -4,6 +4,16 @@ Append-only. Newest entry at the top. Each entry: date, decision, why, alternati
 
 ---
 
+### 2026-08-20 — Git + private GitHub repo chosen for multi-machine work
+
+**Decision:** The whole project (`context/` vault and future `lab/`/`sandbox/` code) lives in one private GitHub repo — `https://github.com/ShayanJafri20/Ai-Research-Lab` — synced via plain `git push`/`git pull` between machines. `context/` is tracked in the same repo as the code, not gitignored or split out. `context/.obsidian/workspace.json` is gitignored (pure local UI state, not privacy-related — see `.gitignore`).
+
+**Why:** User needs to code from a second PC. Considered and rejected: USB/copy-paste and cloud-sync folders (both risk silent overwrites, no real conflict resolution — see [[01-Philosophy]] hard rule 3, problem-first reasoning); gitignoring `context/` and shuttling it manually (rejected — reintroduces the exact sync problem git solves, and breaks the `CLAUDE.md` → `context/00-Hub.md` auto-discovery design meant to give any new Claude session full context automatically); making the repo public now (rejected — `context/` is a raw, un-curated learning journal including self-reported weaknesses in [[05-Concepts]], not portfolio material; private→public is a free toggle any time, public→regretted-it is not, since anything exposed while public can already be cloned/cached/indexed). Deleting `context/` and then going public was also considered and rejected as a false fix — deleting a folder in a new commit doesn't remove it from git history, so it would remain fully visible once public; a genuinely public share later should be a brand-new repo built for that purpose, not a rewrite of this one's history.
+
+**Branches/merges/PRs:** deliberately not used yet — nothing has diverged (one commit, one branch). Per hard rule 3, these get introduced hands-on the first time work actually diverges across the two machines, not as a preemptive lesson.
+
+---
+
 ### 2026-08-20 — Folder/file structure must always be explained (hard rule 9)
 
 **Decision:** Every file, folder, and config that appears in the project needs a stated reason at the time it's created — extends [[01-Philosophy]] hard rule 3 (no tools installed without justification) to project structure itself, including boilerplate a framework/CLI would normally scaffold silently.

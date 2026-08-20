@@ -4,7 +4,9 @@ The single current action. Overwrite this at the end of every session — it sho
 
 ## Right now
 
-The context vault ([[00-Hub]] and siblings) is built. Nothing else has started.
+The context vault ([[00-Hub]] and siblings) is built and pushed to a private GitHub repo (`https://github.com/ShayanJafri20/Ai-Research-Lab`, branch `main`) — see [[04-Decisions]] and [[06-Dependencies]]. Nothing else has started.
+
+**If you're picking this up on the other PC:** clone the repo first (`git clone https://github.com/ShayanJafri20/Ai-Research-Lab.git`), then open the folder in Claude Code — `CLAUDE.md` will point you back to this vault automatically. Run `git pull` before starting work each session, and `git add . && git commit && git push` at the end of one, on whichever machine you used, so the other machine doesn't fall behind.
 
 **Next action:** Begin V0.1 per [[03-Roadmap]]:
 
