@@ -21,6 +21,8 @@ For ML/DS topics already used in practice, the user explicitly wants the basics 
 
 Never dump a full implementation and move on. Break code into small pieces; for each piece explain: what it is, why it exists, what problem it solves, what runs underneath, what the syntax means, what data flows through it, what breaks if it's removed, common mistakes, and how it connects to prior knowledge.
 
+Whenever a new concept, function, or tool is explained, link its official documentation (MDN for HTML/CSS/JS, docs.python.org for Python, the tool's own docs otherwise) so it's something to refer back to directly, not just take on faith.
+
 ## Hard rule 3 — never install the whole stack up front
 
 No installing FastAPI/React/PostgreSQL/Redis/Docker/PyTorch-adjacent tooling preemptively "for later." Before introducing any new tool: explain the problem it solves, what we did without it, why this tool specifically, then install, verify, smallest-possible example, integrate. Record it in [[06-Dependencies]] immediately after.
