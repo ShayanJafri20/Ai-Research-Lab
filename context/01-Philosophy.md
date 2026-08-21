@@ -66,6 +66,11 @@ Two spaces:
 
 Flow: confusing abstraction in main project → isolate it as a sandbox experiment → understand it → return and apply it in the main project. Sandbox experiments don't get folded into the main project's code.
 
+**Candidate sandbox projects (added 2026-08-21):** small, disposable, vanilla HTML/CSS/JS-only builds to reach for if a JS/DOM/async concept isn't landing from the main Lab app alone — not scheduled, just available options, logged in [[07-Sandbox-Log]] if used:
+- **Counter** — button → click event → JS state change → DOM update → browser render. Good first drill for events + DOM manipulation.
+- **Todo list** — arrays, objects, DOM diffing by hand, `localStorage`.
+- **Small fetch-based app** (e.g. a weather lookup) — `fetch()` → HTTP → JSON → Promise → DOM. Good drill before V0.9 ETL, which will do the same round trip against a real dataset API.
+
 ## Success criterion
 
 Not "how fast did we finish" but **"how much of what was built can the user explain without AI?"** — end goal is being able to narrate the full stack (browser → DOM → JS → HTTP → backend → DB → cache → queue → worker → GPU → model) unaided.

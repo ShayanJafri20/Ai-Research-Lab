@@ -4,6 +4,20 @@ Append-only. Newest entry at the top. Each entry: date, decision, why, alternati
 
 ---
 
+### 2026-08-21 — Gap-check against external web-dev roadmap; kept plan, added concept-depth checklists
+
+**Decision:** User brought in a generic web-dev learning roadmap (browser fundamentals → HTML → CSS → JS → HTTP → Node.js → databases → React → TypeScript → Tailwind → Next.js → production) from a separate ChatGPT conversation and asked whether it changes our plan. Verdict: the *sequencing philosophy* independently matches what [[01-Philosophy]] already enforces (rules 3, 7, 8) — no change needed there. Two real forks were surfaced and resolved:
+1. **Backend runtime stays Python** (V0.3 raw HTTP server → V0.4 FastAPI, not Node.js/Express) — matches existing ML/Python fluency, avoids a second unfamiliar server-side language, and the rest of the roadmap (Postgres, Pandas/ETL, RNN research track) is already built around it.
+2. **No dedicated React/TypeScript/Tailwind/Next.js phase added** — stays deferred per hard rule 3, only introduced if a real problem in the project calls for it, not pre-planned.
+
+What *did* change: the user clarified the actual goal is full underlying understanding of both frontend and backend, not just shipping features, and asked for a genuine gap-check rather than a stack switch. Cross-referencing GPT's more granular concept lists against [[03-Roadmap]] found real granularity gaps (not direction gaps) — CSS and JS were each flattened into a single roadmap line with no sub-concept breakdown, HTTP fundamentals weren't unpacked, and auth/cookies/sessions/CORS didn't appear anywhere. Added explicit "Concept depth checklists" to [[03-Roadmap]] and candidate sandbox drills (Counter/Todo/fetch-app) to [[01-Philosophy]] so these don't get silently skipped across a long multi-session project, without changing the version sequence or pulling anything in early.
+
+**Why:** Hard rule 3 says don't install/introduce tools without a real problem — but concept *tracking* is different from tool *installation*; leaving CSS/JS/HTTP as one-line roadmap items risked skipping sub-topics not because a problem never arose, but because nobody was watching for them across sessions.
+
+**Alternatives considered:** Adopting GPT's roadmap wholesale, including Node.js/Express and a React/Next.js phase (rejected — abandons the Python-leverage rationale already decided, and pre-plans a frontend framework before any real need, violating hard rule 3); making no changes at all (rejected — the granularity gaps were real, even though the direction wasn't wrong).
+
+---
+
 ### 2026-08-20 — Removed premature venv step from V0.1
 
 **Decision:** Moved "set up a Python virtual environment" out of the V0.1 next-step list. V0.1 is pure static HTML/CSS/JS — no Python code exists yet to isolate. Venv setup now correctly waits for V0.3 (first raw Python HTTP server).
