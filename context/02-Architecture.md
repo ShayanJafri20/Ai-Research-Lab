@@ -4,15 +4,15 @@ Living document. Update this every time a layer is added — it should always re
 
 Governed by [[01-Philosophy]] hard rule 7 (one layer below current abstraction) and rule 8 (earn every layer).
 
-## Status: not started
+## Status: V0.1 in progress
 
-No code exists yet. Only this context vault ([[00-Hub]]) has been created, per explicit user request to establish structured cross-session context before writing the first line of the project itself.
+`lab/index.html` exists with the minimal required HTML skeleton (doctype, `<html lang="en">`, `<head>`/`<title>`, `<body>`/`<h1>`). Verified working — opened in a browser on both machines, tab and page content matched prediction. No CSS, no JavaScript, no sections/button content yet — those are next within V0.1.
 
 ## Current stack
 
 | Layer | Technology | Status |
 |---|---|---|
-| Frontend | none yet | not started |
+| Frontend | Static HTML (`lab/index.html` — skeleton only) | in progress (V0.1) |
 | Backend | none yet | not started |
 | Database | none yet | not started |
 | Cache | none yet | not started |

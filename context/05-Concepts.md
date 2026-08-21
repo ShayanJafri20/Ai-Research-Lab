@@ -24,5 +24,6 @@ Update this whenever a session reveals what the user does/doesn't understand. Dr
 
 | Date | Concept | Status | Notes |
 |---|---|---|---|
+| 2026-08-21 | HTML skeleton (doctype, `<html>`, `<head>`/`<title>`, `<body>`) | Partially understood | Couldn't write it unassisted on first try ("I don't know the code") — built together line by line with explanation per line. Predict-run-inspect succeeded afterward (correctly matched tab vs. page content on both machines). Re-attempt writing structure unassisted next time a similar skeleton is needed, before calling this fully understood. |
 | 2026-08-20 | Git core mechanics (working directory / staging / repo, `add`/`commit`/`push`/`pull`, `.gitignore`) | Understood | Confirmed after a from-scratch walkthrough — first pass moved too fast (jumped straight to commands without the mental model), second pass slowed down and it landed. Branches/merges/PRs still unconfirmed — see [[01-Philosophy]] hard rule 3, deferred to first real multi-machine divergence. |
 | 2026-08-20 | (vault created, no teaching session yet) | — | — |
