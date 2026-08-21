@@ -25,6 +25,7 @@ Read in this order, then continue from where [[08-Next-Step]] leaves off. **Do n
 - [[06-Dependencies]] — installed tools and why
 - [[07-Sandbox-Log]] — sandbox experiment index
 - [[08-Next-Step]] — current single next action
+- [[09-Ideas-Backlog]] — concepts flagged for later that don't have a current trigger yet
 
 ## What this project is
 
