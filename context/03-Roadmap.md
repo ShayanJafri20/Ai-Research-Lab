@@ -35,6 +35,68 @@ A **direction, not a schedule** (per [[01-Philosophy]]). Versions advance only w
 | V2.3 | Monitoring |
 | V2.4 | Multimodal research lab |
 
+## Why this order (each arrow is a "this broke, so we need that" moment, not a schedule)
+
+```
+V0.1 Static HTML/CSS/JS
+     -> page is fake: nothing changes, nothing persists, nothing computes
+     v  problem: a button that does nothing isn't an app
+
+V0.2 DOM + browser interaction (JavaScript)
+     -> button can change the page, but only using data typed into the HTML/JS itself
+     v  problem: nothing lives anywhere outside the browser tab
+
+V0.3 HTTP + tiny raw Python server
+     -> page can talk to a program outside itself, but a hand-written server gets
+        messy fast (manual parsing, no routing conventions)
+     v  problem: real APIs need structure a raw socket server doesn't give you
+
+V0.4 FastAPI
+     -> clean routes/validation, but every value lives in a Python variable and
+        vanishes on restart
+     v  problem: no persistence
+
+V0.5 PostgreSQL
+     -> data survives a restart, but growing data needs real query/schema tooling
+     v  problem: raw SQL without indexes/migrations doesn't scale or evolve safely
+
+V0.6 SQL, migrations, indexes -> data layer solid; this is where real research
+     content can start, because there's finally somewhere to put it
+
+V0.7-V0.9 Dataset Explorer -> Pandas/EDA -> ETL
+     -> need to actually look at and clean data before training on it
+
+V1.0-V1.3 RNN -> LSTM/GRU -> Attention -> Transformer
+     -> each architecture is introduced because the previous one has a specific,
+        teachable failure mode (RNNs forget long sequences -> gating fixes that ->
+        sequential processing is slow/still bottlenecked -> attention looks at
+        everything at once -> generalizing that gives a Transformer)
+
+V1.4 Experiment tracking
+     -> once several architectures/hyperparams are tried, eyeballing results stops working
+
+V1.5-V1.7 Redis/caching -> Background jobs -> WebSockets
+     -> training takes real time: can't block an HTTP request for minutes (-> jobs),
+        want live progress instead of refreshing (-> WebSockets); caching shows up
+        wherever something slow gets asked for repeatedly
+
+V1.8-V1.9 Model registry -> Inference server
+     -> trained models pile up unorganized -> need to store/version them, then serve
+        predictions from one
+
+V2.0 Distributed training -> a single GPU becomes the bottleneck for bigger models/datasets
+
+V2.1 Docker/CI-CD -> "works on my machine" becomes a real problem the moment more
+     than one environment is involved (same root issue as syncing this project
+     across two PCs, but for the runtime instead of files)
+
+V2.2-V2.4 Cloud -> Monitoring -> Multimodal research lab
+     -> local hardware runs out of room -> running services need observability ->
+        the research itself expands past text into vision/audio
+```
+
+If a version turns out to need something unexpected, the chain adjusts right there rather than forcing the next box on the list — see [[09-Ideas-Backlog]] for concepts flagged along the way that don't have a trigger yet.
+
 ## Concept depth checklists (added 2026-08-21)
 
 User goal is full understanding of what's happening underneath, not just shipping features — see [[04-Decisions]] "Gap-check against external web-dev roadmap." These expand the one-line roadmap rows above into sub-concepts so nothing gets silently skipped across a many-session project. Track actual coverage in [[05-Concepts]], not here — this is the checklist, not the log.
