@@ -32,4 +32,4 @@ A single, gradually-evolving application ("AI Research Lab") used as the vehicle
 
 ## Who this is for
 
-User: jafrishaheer1@gmail.com — Data Science / ML background (NumPy, Pandas, PyTorch, CNNs, Transformers), transitioning toward AI research. Self-assessed weak general software engineering fluency — see [[01-Philosophy]] rule 1 and [[05-Concepts]].
+User: — Data Science / ML background (NumPy, Pandas, PyTorch, CNNs, Transformers), transitioning toward AI research. Self-assessed weak general software engineering fluency — see [[01-Philosophy]] rule 1 and [[05-Concepts]].
