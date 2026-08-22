@@ -6,13 +6,13 @@ Governed by [[01-Philosophy]] hard rule 7 (one layer below current abstraction) 
 
 ## Status: V0.1 in progress
 
-`lab/index.html`: full V0.1 HTML structure — doctype/html/head/title/body/h1, plus three `<section>`s (Models/Datasets/Experiments, each with `<h2>`) and one `<button>`. Skeleton verified working in-browser on both machines (tab and page content matched prediction) before the sections/button/CSS were added. `lab/style.css` exists, linked via `<link rel="stylesheet">`, with two rules (`h1` color, `section` margin-bottom) — first real CSS chunk (cascade + box model) in progress. No JS yet. Taught chunk-by-chunk per [[01-Philosophy]] hard rule 2; concepts logged in [[05-Concepts]].
+`lab/index.html`: full V0.1 HTML structure — doctype/html/head/title/body/h1, three `<section>`s (Models/Datasets/Experiments, each with `<h2>`) wrapped in a `<div class="sections">`, and one `<button>`. `lab/style.css` covers box model (margin/padding/background-color), class selectors, cascade/specificity/inheritance, typography (`font-family` with fallback stack), and flexbox (`.sections { display: flex; gap: 30px; }`) — the three sections now render as a row instead of a stack. No JS yet. Taught chunk-by-chunk per [[01-Philosophy]] hard rule 2; concepts logged in [[05-Concepts]].
 
 ## Current stack
 
 | Layer | Technology | Status |
 |---|---|---|
-| Frontend | static HTML + CSS | HTML structure done; CSS started (cascade, box model) — see [[08-Next-Step]] for next CSS chunk |
+| Frontend | static HTML + CSS | HTML structure done; CSS covers box model, cascade/specificity/inheritance, typography, and basic flexbox layout — see [[08-Next-Step]] for next CSS chunk |
 | Backend | none yet | not started |
 | Database | none yet | not started |
 | Cache | none yet | not started |
