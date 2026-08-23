@@ -55,3 +55,7 @@ button:hover{
     }
     
 }
+
+.clicked { 
+    background-color: darkorange;
+}

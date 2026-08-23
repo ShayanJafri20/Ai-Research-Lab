@@ -4,7 +4,7 @@ A **direction, not a schedule** (per [[01-Philosophy]]). Versions advance only w
 
 ## Current position
 
-**V0.1 complete.** HTML structure, full CSS (box model, flexbox, media queries, transitions), and a real JS foundation (variables/arrays/objects/loops/functions/DOM manipulation) all working together — the button is interactive and all three sections render from JS arrays. Next: **V0.2** (deeper DOM/browser interaction). Live detail in [[08-Next-Step]].
+**V0.1 and V0.2 both complete.** HTML structure, full CSS (box model, flexbox, media queries, transitions), and a full JS foundation (variables/arrays/objects/loops/functions/DOM manipulation, classList, event delegation, destructuring/spread/rest) all working together. Next: **V0.3** (HTTP fundamentals + a tiny raw Python HTTP server) — the first real backend, and the first time a Python virtual environment is genuinely justified. Live detail in [[08-Next-Step]].
 
 ## Progression
 
