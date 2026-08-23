@@ -1,5 +1,6 @@
 h1 {
     color: black;
+    font-size: 3.0rem; 
 }
 
 section 
@@ -26,5 +27,31 @@ body {
 .sections{ 
     display: flex;
     flex-direction: row;
-    gap: 30px; 
+    gap:10px; 
+    justify-content: space-between;
+}
+
+button {
+    font-family: inherit;
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: lime;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition: background-color 0.5s ease;
+} 
+
+button:hover{ 
+    background-color: darkgreen;
+}
+
+
+@media (max-width: 600px) {
+    .sections{
+        flex-direction: column;
+    }
+    
 }

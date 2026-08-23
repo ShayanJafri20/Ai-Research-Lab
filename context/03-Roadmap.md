@@ -4,7 +4,7 @@ A **direction, not a schedule** (per [[01-Philosophy]]). Versions advance only w
 
 ## Current position
 
-**V0.1 in progress.** HTML structure done (skeleton + Models/Datasets/Experiments sections + button). CSS started: external stylesheet linked, cascade and box model introduced via two real rules, confirmed in DevTools. Live detail in [[08-Next-Step]].
+**V0.1 complete.** HTML structure, full CSS (box model, flexbox, media queries, transitions), and a real JS foundation (variables/arrays/objects/loops/functions/DOM manipulation) all working together — the button is interactive and all three sections render from JS arrays. Next: **V0.2** (deeper DOM/browser interaction). Live detail in [[08-Next-Step]].
 
 ## Progression
 

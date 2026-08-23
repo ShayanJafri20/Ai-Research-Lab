@@ -4,4 +4,5 @@ Concepts/tools the user flagged as wanting to learn eventually, but that don't h
 
 | Date added | Idea | Why it's not "now" | Resolved (roadmap version / sandbox / dropped) |
 |---|---|---|---|
-| *(none yet)* | | | |
+| 2026-08-23 | CSS Grid (2D layout — rows and columns together) | Flexbox already solved the only layout problem this page had (three sections in a row); no real 2D-layout need exists yet to justify it | *(open)* |
+| 2026-08-23 | `display: inline` / `inline-block` | No current element needs inline flow with box-model control; noted conceptually, not exercised hands-on | *(open)* |
