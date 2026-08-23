@@ -24,16 +24,17 @@ A **direction, not a schedule** (per [[01-Philosophy]]). Versions advance only w
 | V1.2 | Attention |
 | V1.3 | Transformer |
 | V1.4 | Experiment tracking |
-| V1.5 | Redis / caching |
-| V1.6 | Background jobs |
-| V1.7 | WebSockets |
-| V1.8 | Model registry |
-| V1.9 | Inference server |
-| V2.0 | Distributed training |
-| V2.1 | Docker / CI-CD |
-| V2.2 | Cloud deployment |
-| V2.3 | Monitoring |
-| V2.4 | Multimodal research lab |
+| V1.5 | Reinforcement learning (RLHF-style alignment) |
+| V1.6 | Redis / caching |
+| V1.7 | Background jobs |
+| V1.8 | WebSockets |
+| V1.9 | Model registry |
+| V2.0 | Inference server |
+| V2.1 | Distributed training |
+| V2.2 | Docker / CI-CD |
+| V2.3 | Cloud deployment |
+| V2.4 | Monitoring |
+| V2.5 | Multimodal research lab |
 
 ## Why this order (each arrow is a "this broke, so we need that" moment, not a schedule)
 
@@ -71,26 +72,40 @@ V1.0-V1.3 RNN -> LSTM/GRU -> Attention -> Transformer
         teachable failure mode (RNNs forget long sequences -> gating fixes that ->
         sequential processing is slow/still bottlenecked -> attention looks at
         everything at once -> generalizing that gives a Transformer)
+     -> tokenization (and later BPE, once word-level vocab/OOV problems show up)
+        is forced in immediately, since none of the above can accept raw text;
+        PyTorch is introduced only once manual/NumPy backprop gets genuinely
+        painful, not before -> autograd + GPU acceleration become the earned reason
 
 V1.4 Experiment tracking
-     -> once several architectures/hyperparams are tried, eyeballing results stops working
+     -> once several architectures/hyperparams are tried, eyeballing results stops
+        working -> this is also where config files replace hardcoded hyperparameters
 
-V1.5-V1.7 Redis/caching -> Background jobs -> WebSockets
+V1.5 Reinforcement learning (RLHF-style alignment)
+     -> a Transformer trained purely on next-token prediction reflects the
+        statistics of its training data, not necessarily what you actually want
+        it to do
+     v  problem: supervised training alone has no way to express "preference" -
+        it can only imitate, not optimize for a judged outcome
+
+V1.6-V1.8 Redis/caching -> Background jobs -> WebSockets
      -> training takes real time: can't block an HTTP request for minutes (-> jobs),
         want live progress instead of refreshing (-> WebSockets); caching shows up
         wherever something slow gets asked for repeatedly
 
-V1.8-V1.9 Model registry -> Inference server
+V1.9-V2.0 Model registry -> Inference server
      -> trained models pile up unorganized -> need to store/version them, then serve
-        predictions from one
+        predictions from one -> this is also the natural home for generation-time
+        concerns like top-k/top-p sampling and KV caching, once "serving fast,
+        repeated predictions" is the actual problem instead of "training once"
 
-V2.0 Distributed training -> a single GPU becomes the bottleneck for bigger models/datasets
+V2.1 Distributed training -> a single GPU becomes the bottleneck for bigger models/datasets
 
-V2.1 Docker/CI-CD -> "works on my machine" becomes a real problem the moment more
+V2.2 Docker/CI-CD -> "works on my machine" becomes a real problem the moment more
      than one environment is involved (same root issue as syncing this project
      across two PCs, but for the runtime instead of files)
 
-V2.2-V2.4 Cloud -> Monitoring -> Multimodal research lab
+V2.3-V2.5 Cloud -> Monitoring -> Multimodal research lab
      -> local hardware runs out of room -> running services need observability ->
         the research itself expands past text into vision/audio
 ```
@@ -108,6 +123,10 @@ User goal is full understanding of what's happening underneath, not just shippin
   - Browser API layer (V0.2): DOM methods (`querySelector`, `createElement`, `textContent`, `classList`), events, event loop, call stack, Web APIs, Promises, `async`/`await`, `fetch()`.
 - **V0.3 — HTTP fundamentals**, unpacked: URL anatomy, DNS, IP, client/server model, request anatomy (method/headers/body), response anatomy (status code/headers/body), the status code families (2xx/3xx/4xx/5xx), HTTP vs HTTPS.
 - **V0.4+ — Auth/sessions** (not currently anywhere in the roadmap): cookies, sessions, tokens, CORS. Deliberately deferred, not forgotten — this single-user app has no login yet, so hard rule 3 has nothing to justify it. Likely real trigger: V0.9 ETL pulling an external dataset API that needs a key/token. Revisit then, not before.
+- **V1.0-V1.3 — NLP/tokenization** (added 2026-08-23): tokenization (forced immediately — models take numbers, not text), BPE/subword tokenization (once word-level vocab/out-of-vocabulary limits show up, expect around V1.2-V1.3), lemmatization (cover conceptually — what it is, why classical NLP needed it, why subword tokenization mostly displaced that need — not a deep implementation focus). Framework: hand-rolled/NumPy math first for the simplest case, PyTorch introduced only once manual backprop is genuinely painful (hard rule 3/7), not preemptively.
+- **V1.4 — Config-driven training**: hyperparameters move out of hardcoded scripts into config files once multiple runs need comparing — same session that introduces experiment tracking.
+- **V1.5 — RL/RLHF**: added 2026-08-23 as a genuine new version (not a bolt-on) — see [[04-Decisions]] for why it's separate from the supervised RNN→Transformer track.
+- **V1.9-V2.0 — Generation/serving**: top-k/top-p sampling (text generation quality/diversity), KV caching (inference-speed optimization for Transformers) — both fit once there's a working model to generate from or serve, not before.
 
 ## Notes
 

@@ -4,6 +4,22 @@ Append-only. Newest entry at the top. Each entry: date, decision, why, alternati
 
 ---
 
+### 2026-08-23 — Added Reinforcement Learning as a real roadmap version (V1.5); renumbered V1.5-V2.4 to V1.6-V2.5
+
+**Decision:** User asked whether tokenization/BPE/lemmatization, PyTorch, config-driven training, top-k sampling, KV caching, and LoRA/QLoRA would be covered, plus reinforcement learning. Verdict, itemized:
+- Tokenization, BPE, lemmatization, PyTorch (introduced only after a hand-rolled/NumPy pass, per hard rule 3/7), and config files all fit naturally into the *existing* V1.0-V1.4 track — added to that section's concept-depth checklist in [[03-Roadmap]], no roadmap restructuring needed.
+- top-k/top-p sampling and KV caching fit naturally into V1.9-V2.0 (Model registry/Inference server, renumbered from V1.8-V1.9) — also just a checklist addition.
+- LoRA/QLoRA has no current trigger (no large pretrained model exists yet to need efficient fine-tuning) — logged to [[09-Ideas-Backlog]] instead of forced into the roadmap now.
+- **Reinforcement learning (RLHF-style alignment) is different** — it's a genuinely separate subfield from the supervised RNN→LSTM→Attention→Transformer track (different training loop, different math), not a bolt-on extension of it. User explicitly chose to add it as a real, dedicated roadmap version rather than defer it.
+
+**Placement:** inserted as the new **V1.5**, directly after V1.4 (Experiment tracking) and before the systems/infra stretch (Redis/jobs/WebSockets). Reasoning: RL needs a working trained model (V1.0-V1.3) and ideally already-solid experiment tracking (V1.4, since RL training is notoriously unstable and benefits enormously from tracked runs) before it makes sense to attempt. Everything from the old V1.5 onward shifted up by one version number (old V1.5-V2.4 → new V1.6-V2.5). The roadmap table, the causal "why this order" narrative, and the concept-depth checklists in [[03-Roadmap]] were all updated to match — this is a renumbering of labels only, no version's actual content changed.
+
+**Why renumber instead of using a fractional label like "V1.45":** the project's version numbers are direction markers, not semver — a clean sequential renumber keeps the roadmap and its own causal narrative readable for future sessions, and nothing outside [[03-Roadmap]] referenced the old V1.5+ numbers specifically (checked [[08-Next-Step]], [[05-Concepts]], [[09-Ideas-Backlog]] before renumbering).
+
+**Alternatives considered:** folding RL into V1.3 (Transformer) or V1.4 (Experiment tracking) as a sub-topic (rejected — user and this session agreed it's substantial enough to warrant its own dedicated version, not a footnote); leaving it on the Ideas Backlog (the other option offered, not chosen — user picked the dedicated-version path).
+
+---
+
 ### 2026-08-21 — Gap-check against external web-dev roadmap; kept plan, added concept-depth checklists
 
 **Decision:** User brought in a generic web-dev learning roadmap (browser fundamentals → HTML → CSS → JS → HTTP → Node.js → databases → React → TypeScript → Tailwind → Next.js → production) from a separate ChatGPT conversation and asked whether it changes our plan. Verdict: the *sequencing philosophy* independently matches what [[01-Philosophy]] already enforces (rules 3, 7, 8) — no change needed there. Two real forks were surfaced and resolved:
