@@ -2,3 +2,8 @@
 # meaningless to sync between machines, would just create noisy diffs.
 context/.obsidian/workspace.json
 context/.obsidian/workspace-mobile.json
+
+# Python virtual environment — machine-specific (pyvenv.cfg hardcodes an
+# absolute path to this machine's Python install), hundreds of generated
+# files, fully reproducible via `python -m venv .venv` + requirements.txt.
+lab/.venv/
