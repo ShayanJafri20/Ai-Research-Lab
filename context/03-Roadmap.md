@@ -4,7 +4,7 @@ A **direction, not a schedule** (per [[01-Philosophy]]). Versions advance only w
 
 ## Current position
 
-**V0.1 and V0.2 both complete.** HTML structure, full CSS (box model, flexbox, media queries, transitions), and a full JS foundation (variables/arrays/objects/loops/functions/DOM manipulation, classList, event delegation, destructuring/spread/rest) all working together. Next: **V0.3** (HTTP fundamentals + a tiny raw Python HTTP server) — the first real backend, and the first time a Python virtual environment is genuinely justified. Live detail in [[08-Next-Step]].
+**V0.1, V0.2, and the core of V0.3 all complete.** HTML structure, full CSS (box model, flexbox, media queries, transitions), and a full JS foundation (variables/arrays/objects/loops/functions/DOM manipulation, classList, event delegation, destructuring/spread/rest) all working together. V0.3 (2026-08-24) added: HTTP fundamentals, a Python venv, and a raw `http.server`-based backend (`lab/server.py`) with one hand-routed endpoint. Next: **V0.4** (FastAPI) — rebuild that same endpoint through a real framework so the contrast with hand-rolled routing is felt directly. Live detail in [[08-Next-Step]].
 
 ## Progression
 
