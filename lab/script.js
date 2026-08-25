@@ -18,6 +18,18 @@ async function loadModels() {
     renderList(data.models.map(describeModelNames), modelList);
 }
 
+async function loadDatasets() {
+    const response = await fetch("http://127.0.0.1:8000/datasets");
+    const data = await response.json();
+    renderList(data.datasets, datasetlist);
+}
+
+async function loadExperiments() {
+    const response = await fetch("http://127.0.0.1:8000/experiments");
+    const data = await response.json();
+    renderList(data.experiments, experimentsList);
+}
+
 function describeModelNames(name) {
     return `Model: ${name}`;
 }
@@ -27,10 +39,7 @@ modelList.addEventListener("click", (event) => {
   console.log("You clicked:", event.target.textContent);
 });
 
-const dataset = ["harrypotter.txt", "apple/oranges.txt", "BeyondGoodandEvil.txt"]
 const datasetlist = document.querySelector(".datasets-list")
-
-const experiments = ["Baseline CNN - run 1", "Transformer fine-tune - run 2", "Hyperparameter sweep - run 3"];
 const experimentsList = document.querySelector(".experiments-list");
 
 function renderList(items, container) { 
@@ -42,5 +51,5 @@ function renderList(items, container) {
 }
 
 loadModels();
-renderList(dataset, datasetlist)
-renderList(experiments, experimentsList)
+loadDatasets();
+loadExperiments();
