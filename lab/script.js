@@ -12,8 +12,11 @@ button.addEventListener("click", (event) => {
     button.classList.toggle("clicked")  
 })
 
-
-const models = ["ResNet", "AlexNet", "Transformer"];
+async function loadModels() {
+    const response = await fetch("http://127.0.0.1:8000/models")
+    const data = await response.json();
+    renderList(data.models.map(describeModelNames), modelList);
+}
 
 function describeModelNames(name) {
     return `Model: ${name}`;
@@ -38,22 +41,6 @@ function renderList(items, container) {
     }
 }
 
-renderList(models.map(describeModelNames), modelList) 
-renderList(dataset, datasetlist) 
+loadModels();
+renderList(dataset, datasetlist)
 renderList(experiments, experimentsList)
-
-const [first, second, third] = models;
-console.log(first); // "ResNet"
-
-const model = { name: "ResNet", accuracy: 0.92 };
-const { name, accuracy } = model;
-console.log(name, accuracy);
-
-const newModels = [...models, "GPT"];
-console.log(newModels); // ["ResNet", "AlexNet", "Transformer", "GPT"]
-console.log(models);    // still just the original 3 - untouched
-
-function addModels(...newOnes) {
-  return [...models, ...newOnes];
-}
-console.log(addModels("GPT", "BERT"));

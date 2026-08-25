@@ -7,3 +7,8 @@ context/.obsidian/workspace-mobile.json
 # absolute path to this machine's Python install), hundreds of generated
 # files, fully reproducible via `python -m venv .venv` + requirements.txt.
 lab/.venv/
+
+# Python's compiled bytecode cache — auto-regenerated on every run,
+# tied to the exact Python version, zero value stored in git.
+__pycache__/
+*.pyc
