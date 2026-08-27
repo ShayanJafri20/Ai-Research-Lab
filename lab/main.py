@@ -1,18 +1,56 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware 
+from dotenv import load_dotenv
+import psycopg
+
+load_dotenv()
 
 app = FastAPI()
 @app.get("/models")
 def get_models():
-    return {"models": ["ResNet","AlexNet","Transformer"]}
+    conn = psycopg.connect(
+        dbname=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        host=os.getenv("DB_HOST"),
+        port=os.getenv("DB_PORT")
+    )
+    cur = conn.cursor()
+    cur.execute("SELECT name FROM models")
+    rows = cur.fetchall()
+    conn.close()
+    return {"models": [row[0] for row in rows]}
 
 @app.get("/datasets")
 def get_datasets():
-    return {"datasets": ["harrypotter.txt", "apple/oranges.txt", "BeyondGoodandEvil.txt"]}
+    conn = psycopg.connect(
+        dbname=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        host=os.getenv("DB_HOST"),
+        port=os.getenv("DB_PORT")
+    )
+    cur = conn.cursor()
+    cur.execute("SELECT filename FROM datasets")
+    rows = cur.fetchall()
+    conn.close()
+    return {"datasets": [row[0] for row in rows]}
 
 @app.get("/experiments")
 def get_experiments():
-    return {"experiments": ["Baseline CNN - run 1", "Transformer fine-tune - run 2", "Hyperparameter sweep - run 3"]}
+    conn = psycopg.connect(
+        dbname=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        host=os.getenv("DB_HOST"),
+        port=os.getenv("DB_PORT")
+    )
+    cur = conn.cursor()
+    cur.execute("SELECT description FROM experiments")
+    rows = cur.fetchall()
+    conn.close()
+    return {"experiments": [row[0] for row in rows]}
 
 app.add_middleware(
     CORSMiddleware,

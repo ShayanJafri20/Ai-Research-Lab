@@ -58,6 +58,10 @@ The first version of the project is deliberately tiny (static HTML/CSS/JS, no fr
 
 Same principle as hard rule 3, applied to project structure and config, not just packages: before creating any file, folder, or config (a new directory, a `.gitignore`, a config file, a boilerplate folder a framework CLI would normally scaffold silently), say what it's for and why it exists *now*. Nothing gets created "because that's just how projects look" or because a generator produced it — if a tool auto-generates files, walk through what each one is for rather than leaving them unexplained. The project's folder tree should be fully explainable at every point, the same way the code is.
 
+## Refactor timing (added 2026-08-27)
+
+Spotting duplication early and naming it is still worth doing (per hard rule 6's `renderList` precedent) — but don't push the actual refactor before the feature it's part of is confirmed working end-to-end. User explicitly deferred a proposed `get_connection()` cleanup during V0.5 with the reasoning: "generalizing everything will be too much [while] learning, we will do after everything is working." Treat this as standing guidance, not a one-off: **flag duplication, then default to "make it work first" unless the user asks to clean up now.** Track deferred cleanups explicitly (e.g. in [[08-Next-Step]]) so they aren't silently forgotten, same as the V0.2 scratch-code loose end was tracked until it was actually resolved.
+
 ## Main project vs sandbox
 
 Two spaces:

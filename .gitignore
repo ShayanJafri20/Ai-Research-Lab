@@ -12,3 +12,7 @@ lab/.venv/
 # tied to the exact Python version, zero value stored in git.
 __pycache__/
 *.pyc
+
+# Real secrets (DB password, etc.) — never committed. .env.example documents
+# which variables are needed, without real values, and IS committed.
+lab/.env

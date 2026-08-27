@@ -4,6 +4,16 @@ Append-only. Newest entry at the top. Each entry: date, decision, why, alternati
 
 ---
 
+### 2026-08-27 — Defer refactoring until the feature works end-to-end (new standing rule)
+
+**Decision:** When duplication is spotted mid-build (here: `psycopg.connect(...)` repeated across all three FastAPI routes), flag it and propose the fix, but don't push to do it immediately — default to finishing the working version first, refactor after. Logged as [[01-Philosophy]]'s new "Refactor timing" rule.
+
+**Why:** User explicitly declined an offered `get_connection()` extraction mid-V0.5 with the reasoning that generalizing/cleaning up while still learning the underlying feature is too much cognitive load at once — better to get the full round trip (Postgres → FastAPI → frontend) actually working, then clean up once it's proven. This is a legitimate engineering sequencing principle ("make it work, then make it right"), not corner-cutting, and the same underlying instinct as the earlier "don't skip basics" and "explain before installing" preferences: don't compress multiple new things into one moment.
+
+**Alternatives considered:** Refactoring immediately since the duplication was already identified and the fix was small (rejected — that's what the user pushed back on); doing it silently without asking (rejected — same reasoning as hard rule 6, the user should be consulted on scope, not have decisions like this made unilaterally).
+
+---
+
 ### 2026-08-23 — Added Reinforcement Learning as a real roadmap version (V1.5); renumbered V1.5-V2.4 to V1.6-V2.5
 
 **Decision:** User asked whether tokenization/BPE/lemmatization, PyTorch, config-driven training, top-k sampling, KV caching, and LoRA/QLoRA would be covered, plus reinforcement learning. Verdict, itemized:
