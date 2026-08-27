@@ -4,7 +4,7 @@ A **direction, not a schedule** (per [[01-Philosophy]]). Versions advance only w
 
 ## Current position
 
-**V0.1 through V0.4 all complete.** HTML/CSS/JS foundation solid. V0.3 (2026-08-24) added HTTP fundamentals, a Python venv, and a raw `http.server` backend (`lab/server.py`, kept as a reference). V0.4 (2026-08-25) added FastAPI (`lab/main.py`), decorator-based routing, auto JSON, CORS middleware, and all three sections (Models/Datasets/Experiments) now `fetch()` real data from the backend — no hardcoded frontend data left anywhere. Next: **V0.5 — PostgreSQL** — every route in `main.py` still returns a hardcoded Python list, so nothing actually persists. Live detail in [[08-Next-Step]].
+**V0.1 through V0.5 all complete.** HTML/CSS/JS foundation solid. V0.3 (2026-08-24) added HTTP fundamentals, a Python venv, and a raw `http.server` backend (`lab/server.py`, kept as a reference). V0.4 (2026-08-25) added FastAPI, decorator-based routing, auto JSON, CORS middleware. V0.5 (2026-08-25 to 2026-08-27) added PostgreSQL — a real `ai_research_lab` database with three tables, all three routes now querying it instead of returning hardcoded lists, secrets handled via a gitignored `.env` from the start. Confirmed working end-to-end (verified with a live-insert test, not just trusted). Next: **V0.6** (SQL + migrations + indexes) — or first, the user's choice: revisit the deliberately-deferred `get_connection()` refactor (three routes still duplicate the same connection code). Live detail in [[08-Next-Step]].
 
 ## Progression
 
