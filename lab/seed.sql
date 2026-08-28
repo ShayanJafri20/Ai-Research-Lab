@@ -6,7 +6,9 @@
 
 INSERT INTO models (name) VALUES ('ResNet'), ('AlexNet'), ('Transformer'), ('GPT');
 
-INSERT INTO datasets (filename) VALUES ('harrypotter.txt'), ('apple/oranges.txt'), ('BeyondGoodandEvil.txt');
+-- id 1 is a real file (lab/datasets/peter_rabbit.txt) as of V0.7's Dataset Explorer work;
+-- ids 2 and 3 are still placeholder filenames, pending the same treatment.
+INSERT INTO datasets (filename) VALUES ('peter_rabbit.txt'), ('apple/oranges.txt'), ('BeyondGoodandEvil.txt');
 
 INSERT INTO experiments (description, model_id, dataset_id) VALUES
     ('Baseline CNN - run 1', 1, 2),
