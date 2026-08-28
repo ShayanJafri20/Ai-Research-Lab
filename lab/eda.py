@@ -16,8 +16,12 @@ def analyze_dataset(filepath):
         "unique_words": len(set(words)) 
     }
 
+STOPWORDS = {"the", "and", "of", "to", "a", "in", "is", "it", "you", "he", "she",
+             "was", "that", "his", "her", "with", "as", "for", "on", "at", "but", "not"}
+
 def top_words(text, n=10): 
     words = re.findall(r"\b\w+\b", text.lower())
+    words = [w for w in words if w not in STOPWORDS]
     counts = Counter(words) 
     return counts.most_common(n)
 
