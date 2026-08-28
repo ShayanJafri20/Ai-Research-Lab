@@ -4,6 +4,16 @@ Append-only. Newest entry at the top. Each entry: date, decision, why, alternati
 
 ---
 
+### 2026-08-28 — Power BI upgraded from opportunistic to firmly planned, right after V0.9
+
+**Decision:** Power BI had been logged in [[01-Philosophy]] as an "opportunistic" track — introduced only if a real want for it ever showed up, no fixed trigger. User asked whether it would be used at all, and explained the real reason from their own data-scientist background: ETL cleans and loads data, and a BI tool naturally connects to that clean data to build charts on top of it. That's not a vague wishlist item, it's a correct, standard real-world pipeline pattern the user already understands — so it got the same upgrade RL got earlier: firmly planned, not "maybe." Concrete trigger: immediately after V0.9 (ETL), connect Power BI directly to the by-then-clean `ai_research_lab` database and build real charts/dashboards on real data. Updated [[01-Philosophy]] and [[03-Roadmap]]'s causal narrative to reflect this.
+
+**Why no version renumber this time (unlike RL):** RL is a genuinely separate ML subfield with its own training loop, substantial enough to earn a dedicated version number (V1.5) and justify shifting everything after it. Power BI is more like a single natural extension of V0.9 — connecting an external tool to data that already exists — not a multi-session build of its own. It's noted as a firm next step attached to V0.9 rather than given a new version slot.
+
+**Alternatives considered:** leaving it opportunistic (rejected — the user gave a real, correct technical reason, not just a preference, so "wait and see" no longer fit); giving it a full new roadmap version number like RL got (rejected — disproportionate to its actual scope, would mean renumbering the whole back half of the roadmap again for something that's really one focused session's work).
+
+---
+
 ### 2026-08-27 — Made explicit: Models/Datasets/Experiments sections map directly onto later roadmap versions
 
 **Decision:** Documented, rather than left implicit in the roadmap table, that the three V0.1 sections were never arbitrary placeholder content — each is a deliberate stand-in for what a specific later version fills in for real:

@@ -66,6 +66,9 @@ V0.6 SQL, migrations, indexes -> data layer solid; this is where real research
 
 V0.7-V0.9 Dataset Explorer -> Pandas/EDA -> ETL
      -> need to actually look at and clean data before training on it
+     -> right after V0.9: connect Power BI directly to the now-clean,
+        loaded `ai_research_lab` data and build real charts on it - firmly
+        planned (2026-08-28), not opportunistic, see [[01-Philosophy]]
 
 V1.0-V1.3 RNN -> LSTM/GRU -> Attention -> Transformer
      -> each architecture is introduced because the previous one has a specific,
