@@ -61,10 +61,17 @@ function renderDatasetList(items, container) {
 
 datasetlist.addEventListener("click", async (event) => {
     const id = event.target.dataset.id;
-    const response = await fetch(`http://127.0.0.1:8000/datasets/${id}/preview`);
-    const data = await response.json(); 
-    document.querySelector(".preview").textContent = data.preview;
+
+    const previewresponse = await fetch(`http://127.0.0.1:8000/datasets/${id}/preview`);
+    const previewdata = await previewresponse.json();
+    document.querySelector(".preview").textContent = previewdata.preview;
+
+    const statsresponse = await fetch(`http://127.0.0.1:8000/datasets/${id}/stats`);
+    const statsdata = await statsresponse.json();
+    document.querySelector(".stats").textContent =
+        `Words: ${statsdata.word_count} | Unique: ${statsdata.unique_words} | Top: ${statsdata.top_words.map(pair => pair[0]).join(", ")}`;
 })
+
 
 loadModels();
 loadDatasets();

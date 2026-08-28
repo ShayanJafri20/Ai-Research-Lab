@@ -1,6 +1,7 @@
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware 
+from eda import analyze_dataset, top_words, clean_gutenberg_text
 from dotenv import load_dotenv
 import psycopg
 import logging 
@@ -73,6 +74,35 @@ def get_dataset_preview(dataset_id: int):
     words = text.split()
     preview = " ".join(words[:300])
     return {"filename": row[0], "preview": preview}
+
+@app.get("/datasets/{dataset_id}/stats")
+def get_dataset_stats(dataset_id: int):
+    try:
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT filename FROM datasets WHERE id = %s", (dataset_id,))
+        row = cur.fetchone()
+        conn.close()
+    except Exception as e:
+        logging.error(f"Failed to fetch dataset {dataset_id}: {e}")
+        raise HTTPException(status_code=500, detail="Could not fetch dataset")
+
+    filepath = os.path.join("datasets", row[0])
+
+    if not os.path.exists(filepath):
+        logging.warning(f"Dataset file not found: {filepath}")
+        raise HTTPException(status_code=404, detail="Dataset file not found")
+
+    try:
+        stats = analyze_dataset(filepath)
+        with open(filepath, "r", encoding="utf-8") as f:
+            text = clean_gutenberg_text(f.read())
+        stats["top_words"] = top_words(text, n=10)
+        logging.info(f"Served stats for dataset {dataset_id} ({row[0]})")
+        return stats
+    except Exception as e:
+        logging.error(f"Failed to analyze {filepath}: {e}")
+        raise HTTPException(status_code=500, detail="Could not analyze dataset")
 
 @app.get("/experiments")
 def get_experiments():
