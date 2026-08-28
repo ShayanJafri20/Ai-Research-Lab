@@ -4,6 +4,16 @@ Append-only. Newest entry at the top. Each entry: date, decision, why, alternati
 
 ---
 
+### 2026-08-28 — Realigned placeholder `models`/`experiments` data to the NLP track, dropped CNN names
+
+**Decision:** `models` originally held `ResNet`, `AlexNet`, `Transformer`, `GPT` — a mix of CNN/vision architectures and NLP ones. User noticed this mismatches the actual roadmap: the near-term ML track (V1.0-V1.5) is entirely NLP (RNN → LSTM/GRU → Attention → Transformer → RLHF), while CNN/vision work is an explicitly separate, later track per [[01-Philosophy]] ("when the vision track resumes"). Updated `models` to `RNN`, `LSTM`, `Transformer`, `GPT` — the first three mapping directly onto V1.0/V1.1/V1.3, `GPT` as a recognizable real-world example. `experiments` id `1`'s description (`"Baseline CNN - run 1"`, tied to `model_id = 1`) was updated to `"Baseline RNN - run 1"` to match, since it would otherwise describe the wrong architecture once that model's name changed. Both the live desktop database (via `UPDATE`) and `lab/seed.sql` were updated, same treatment as the dataset-filename swap earlier this session.
+
+**Why:** placeholder data that actively misrepresents the project's actual direction is worse than no placeholder at all — it's exactly the kind of inconsistency this vault's own housekeeping habit exists to catch, just applied to seed data instead of docs.
+
+**Alternatives considered:** leaving it as-is since it's "just placeholder data anyway" (rejected — the whole point of V0.1's "not arbitrary" Models/Datasets/Experiments sections, per the 2026-08-27 decision below, is that they're meant to genuinely preview what the roadmap actually builds toward).
+
+---
+
 ### 2026-08-28 — Power BI upgraded from opportunistic to firmly planned, right after V0.9
 
 **Decision:** Power BI had been logged in [[01-Philosophy]] as an "opportunistic" track — introduced only if a real want for it ever showed up, no fixed trigger. User asked whether it would be used at all, and explained the real reason from their own data-scientist background: ETL cleans and loads data, and a BI tool naturally connects to that clean data to build charts on top of it. That's not a vague wishlist item, it's a correct, standard real-world pipeline pattern the user already understands — so it got the same upgrade RL got earlier: firmly planned, not "maybe." Concrete trigger: immediately after V0.9 (ETL), connect Power BI directly to the by-then-clean `ai_research_lab` database and build real charts/dashboards on real data. Updated [[01-Philosophy]] and [[03-Roadmap]]'s causal narrative to reflect this.

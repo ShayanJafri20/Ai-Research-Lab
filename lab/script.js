@@ -21,7 +21,7 @@ async function loadModels() {
 async function loadDatasets() {
     const response = await fetch("http://127.0.0.1:8000/datasets");
     const data = await response.json();
-    renderList(data.datasets, datasetlist);
+    renderDatasetList(data.datasets, datasetlist);
 }
 
 async function loadExperiments() {
@@ -42,13 +42,29 @@ modelList.addEventListener("click", (event) => {
 const datasetlist = document.querySelector(".datasets-list")
 const experimentsList = document.querySelector(".experiments-list");
 
-function renderList(items, container) { 
-    for (const item of items) { 
-        const li = document.createElement("li"); 
-        li.textContent = item; 
+function renderList(items, container) {
+    for (const item of items) {
+        const li = document.createElement("li");
+        li.textContent = item;
         container.appendChild(li)
     }
 }
+
+function renderDatasetList(items, container) {
+    for (const item of items) {
+        const li = document.createElement("li");
+        li.textContent = item.filename;
+        li.dataset.id = item.id;
+        container.appendChild(li)
+    }
+}
+
+datasetlist.addEventListener("click", async (event) => {
+    const id = event.target.dataset.id;
+    const response = await fetch(`http://127.0.0.1:8000/datasets/${id}/preview`);
+    const data = await response.json(); 
+    document.querySelector(".preview").textContent = data.preview;
+})
 
 loadModels();
 loadDatasets();
