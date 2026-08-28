@@ -7,15 +7,19 @@ import psycopg
 load_dotenv()
 
 app = FastAPI()
-@app.get("/models")
-def get_models():
-    conn = psycopg.connect(
+
+def get_connection():
+    return psycopg.connect(
         dbname=os.getenv("DB_NAME"),
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
         host=os.getenv("DB_HOST"),
         port=os.getenv("DB_PORT")
     )
+
+@app.get("/models")
+def get_models():
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute("SELECT name FROM models")
     rows = cur.fetchall()
@@ -24,13 +28,7 @@ def get_models():
 
 @app.get("/datasets")
 def get_datasets():
-    conn = psycopg.connect(
-        dbname=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        host=os.getenv("DB_HOST"),
-        port=os.getenv("DB_PORT")
-    )
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute("SELECT filename FROM datasets")
     rows = cur.fetchall()
@@ -39,13 +37,7 @@ def get_datasets():
 
 @app.get("/experiments")
 def get_experiments():
-    conn = psycopg.connect(
-        dbname=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        host=os.getenv("DB_HOST"),
-        port=os.getenv("DB_PORT")
-    )
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute("SELECT description FROM experiments")
     rows = cur.fetchall()

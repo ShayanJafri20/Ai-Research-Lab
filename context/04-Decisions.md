@@ -4,6 +4,19 @@ Append-only. Newest entry at the top. Each entry: date, decision, why, alternati
 
 ---
 
+### 2026-08-27 — Made explicit: Models/Datasets/Experiments sections map directly onto later roadmap versions
+
+**Decision:** Documented, rather than left implicit in the roadmap table, that the three V0.1 sections were never arbitrary placeholder content — each is a deliberate stand-in for what a specific later version fills in for real:
+- **Datasets** → V0.7 (Dataset Explorer), V0.8 (Pandas/EDA), V0.9 (ETL) — real dataset files/metadata replace `harrypotter.txt`-style stand-ins.
+- **Models** → V1.9 (Model registry), V2.0 (Inference server) — real trained checkpoints from the V1.0-V1.3 RNN→LSTM→Attention→Transformer track replace `ResNet`/`GPT`-style stand-ins.
+- **Experiments** → V1.4 (Experiment tracking) — real run logs/hyperparameter comparisons replace `Baseline CNN - run 1`-style stand-ins.
+
+**Why:** User asked why the app looks so basic (three sections, placeholder rows) if later versions supposedly move on to real ML work — reasonable to wonder whether the current shape gets discarded. It doesn't: the row *shape* (name/filename/description) was chosen to match what real data will eventually look like, populated early only because [[01-Philosophy]] hard rule 8 requires earning the DB/API layer before building the real feature on top of it. User's framing of the underlying principle: **"everything we do should have a purpose"** — already the substance of hard rules 3/8/9, but worth stating as a direct quote here since it's the reasoning the user reached for unprompted, not just a rule imposed on them.
+
+**Alternatives considered:** Leaving the mapping only implicit in [[03-Roadmap]]'s version list (rejected — user specifically asked for it to be made explicit, and an implied connection across 25 versions is easy to lose track of in a long multi-session project).
+
+---
+
 ### 2026-08-27 — Defer refactoring until the feature works end-to-end (new standing rule)
 
 **Decision:** When duplication is spotted mid-build (here: `psycopg.connect(...)` repeated across all three FastAPI routes), flag it and propose the fix, but don't push to do it immediately — default to finishing the working version first, refactor after. Logged as [[01-Philosophy]]'s new "Refactor timing" rule.
