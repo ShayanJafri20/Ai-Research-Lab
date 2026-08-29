@@ -26,6 +26,7 @@ Read in this order, then continue from where [[08-Next-Step]] leaves off. **Do n
 - [[07-Sandbox-Log]] — sandbox experiment index
 - [[08-Next-Step]] — current single next action
 - [[09-Ideas-Backlog]] — concepts flagged for later that don't have a current trigger yet
+- [[10-NLP-Research-Track]] — detailed V1.0-V1.3 plan (papers, math, dimensions, why each file exists), once the roadmap reaches the NLP track
 
 ## What this project is
 
